@@ -1,0 +1,152 @@
+ROLES:
+
+Administrator
+- can do all
+
+Student
+- can add himself to the course?
+- can view courses
+
+Instructor
+- can view courses
+(?) can set availability?
+
+
+Producer
+- can create new courses
+- can enroll students
+- can assign instructors
+- can view instructors for a course (therefore, only instructors that can teach a particular course should be visible on a course page)
+
+
+
+Non-registered user
+
+=============================
+What functions should the app perform:
+
+Senior manager:
+- list all courses (currently running?)
+- list all students (currently enrolled?)
+- add new producer
+- add new instructor
+
+Producer
+- add student
+- list all students (associated with a particular course)
+- add instructor to the database
+- assign instructor to the course (?)
+
+Instructor
+- view their current course(s)
+- view the list of participants of their course
+
+Student
+- view all announced courses
+- view their current course(s)
+- view the list of participants of their course
+
+Non-registered user
+- view all announced courses
+
+
+==================
+Questions
+
+- can one model inherit data from another (e.g. WDI-7 is a specific case of WDI with a particular start date and end date)?
+- can a model get an authorisation role? (e.g. all Instructors get the role 'instructor')?
+
+
+
+==================
+For CSS
+Заголовок:
+font-family: "PFDinTextCompProBold",Impact,Arial;
+text-transform: uppercase;
+font-weight: normal;
+line-height: 0.9;
+
+color: #666;
+
+Фон пространства, где находится заголовок:
+background: #f2f2f2;
+
+
+
+Основной текст:
+font-family: "News706BT-RomanC",Georgia;
+
+
+
+================
+Querying for time (using Jerry's app on w5d1):
+
+time_range = (Time.now.midnight - 1.day)..Time.now.midnight
+Post.where("created_at" => time_range)
+Post.includes(:comments).where("comments.created_at" => time_range)
+
+
+in Sublime (inside the relevant model):
+- scope :one_week_before, lambda { |time| where(published_at: (time.ago(1.week)..time))}
+in console:
+- Post.one_week_before(Time.now)
+
+also:
+- params = {time: Time.parse("01/01/2014")}
+(time by default - European: day/month/year)
+- Post.one_week_before(params[:time])
+
+To show data without passing the scope:
+- Post.unscoped
+
+To show future events (if default shows only past events)
+In model:
+scope :will_be_published, where("published_at > ?", Time.now)
+In console:
+Post.unscoped.will_be_published
+
+(http://www.elabs.se/blog/36-working-with-time-zones-in-ruby-on-rails)
+
+
+====================
+
+Materials for courses:
+
+Web Development Immersive
+
+A 12-week full-time course
+
+Build a work-ready skill set and fluency in full stack web development. Develop a portfolio of projects individually and in small teams that are ready to present to employers. Prepare for an internship or entry-level job as a junior web developer. <a href="https://generalassemb.ly/education/web-development-immersive">Learn more...</a>
+
+
+Producer: Julien Deslangles-Blanch
+
+Instructors: Jon Chambers, Gerry Mathe
+
+
+------------------------
+
+User Experience Design Immersive
+
+A 10-week full-time course
+
+Apply fundamental UX skills to several hands-on projects in order to build up your design portfolio. Learn from and connect with some of the top UX practitioners in the field, from guest speakers to your instructional team. Prepare for an internship or entry-level job as a junior user experience designer. <a href="https://generalassemb.ly/education/user-experience-design-immersive">Learn more...</a>
+
+
+--------------------------
+PART-TIME COURSES
+--------------------------
+
+Back-End Web Development
+
+A 10-week part-time course
+
+Learn the fundamentals of an object-­oriented programming language (Ruby). Complement front-­end skills by building functional web applications using Rails. Implement your web applications using database solutions. <a href="https://generalassemb.ly/education/back-end-web-development">Learn more...</a>
+
+--------------------------
+
+Data Science
+
+An 11-week part-time course
+
+Applying your math and programming skills to make meaning out of large data sets. Learning how to analyze and manipulate data with Python. Learning how to make predictions about data using fundamental modeling techniques that will help you make better informed business decisions. <a href="https://generalassemb.ly/education/data-science">Learn more...</a>
