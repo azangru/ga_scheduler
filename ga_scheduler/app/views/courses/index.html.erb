@@ -1,0 +1,8 @@
+<% locations = Location.all %>
+<% locations.each do |l| %>
+  <h3><%= "Courses in #{l.name}" %></h3>
+  <% crs = Course.where("location_id = ?", l.id) %>
+  <% crs.each do |c| %>
+    <li><%= link_to "#{c.name}", c %> <%= "(producer: #{c.producer.full_name})" %></li>
+  <% end %>
+<% end %>

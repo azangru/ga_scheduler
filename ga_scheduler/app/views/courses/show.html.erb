@@ -1,0 +1,12 @@
+<h2><%= @course.name %></h2>
+<h3>(<%= "#{@course.program.name}, #{@course.location.name}" %>)</h3>
+
+<h4>list of all cohorts within this course:</h4>
+
+<ul>
+<% @course.cohorts.each do |cohort| %>
+
+  <li> <%= link_to "#{cohort.name}", cohort %> </li>
+
+<% end %>
+</ul>

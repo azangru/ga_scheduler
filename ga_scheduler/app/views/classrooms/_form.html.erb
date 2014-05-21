@@ -1,0 +1,19 @@
+<%= form_for(@classroom) do |f| %>
+
+  <div class="field">
+    <%= f.label :name, "Name of the classroom:"  %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :size, "Accomodates people:" %><br />
+    <%= f.number_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id, "Campus:" %><br />
+    <%= collection_select(:classroom, :location_id, Location.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit("Add classroom") %>
+  </div>
+
+<% end %>

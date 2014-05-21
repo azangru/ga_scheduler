@@ -16,6 +16,22 @@
     <%= f.label :file, 'Upload your photo' %>
     <%= f.file_field :file %>
   </div>
+  <div class="field">
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div class="field">
+    <%= f.label :role %>
+    <%= select_tag(:role, options_for_select(["admin", "producer", "instructor", "student"], "student")) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

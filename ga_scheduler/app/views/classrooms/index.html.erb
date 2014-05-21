@@ -1,0 +1,8 @@
+<% locations = Location.all %>
+<% locations.each do |l| %>
+  <h3><%= "Classrooms in #{l.name}" %></h3>
+  <% cl = Classroom.where("location_id = ?", l.id) %>
+  <% cl.each do |c| %>
+    <li><%= link_to "#{c.name}", c %> </li>
+  <% end %>
+<% end %>

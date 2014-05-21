@@ -1,3 +1,11 @@
-<h3><%= @program.name %></h3>
+<h3><%= @cohort.name %></h3>
 
-<p><%= @program.description %></p>
+<h4>Enrolled students</h4>
+
+<ul>
+  <% @cohort.students.each do |s| %>
+
+    <li><%= s.full_name %></li>
+  
+  <% end %>
+</ul>

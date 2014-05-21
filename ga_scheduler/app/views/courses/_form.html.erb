@@ -1,0 +1,23 @@
+<%= form_for(@course) do |f| %>
+
+  <div class="field">
+    <%= f.label :name, "Name of the course (abbreviation of the program name + abbreviation of the city):"  %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :program_id, "Program:" %><br />
+    <%= collection_select(:course, :program_id, Program.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id, "Campus:" %><br />
+    <%= collection_select(:course, :location_id, Location.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :location_id, "Producer:" %><br />
+    <%= collection_select(:course, :producer_id, User.where(role: "producer"), :id, :full_name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit("Add course") %>
+  </div>
+
+<% end %>

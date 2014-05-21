@@ -8,6 +8,8 @@ class CohortsController < ApplicationController
   # GET /cohorts/new
   def new
     @cohort = Cohort.new
+    # @classrooms = Classroom.where("location_id = ?", ch.course.location_id)
+    @classrooms = Classroom.all
   end
 
   # POST /cohorts
@@ -22,11 +24,7 @@ class CohortsController < ApplicationController
 
   # GET /cohorts/1
   def show
-    @cohort = Cohort.find(params[:id])
-    # role = @user.role || "default"
-    # render "#{role}_show"
-    
-    # render "courses/index"
+    @cohort = Cohort.includes(:students).find(params[:id])
   end
 
   # GET /cohorts/1/edit
@@ -37,6 +35,8 @@ class CohortsController < ApplicationController
   # PUT /cohorts/1
   def update
     @cohort = Cohort.find(params[:id])
+    @cohort.enroll_users(params[:users])
+    @cohort.assign_instructors(params[:users])
     if @cohort.update_attributes(params[:cohort])
       redirect_to @cohort, notice: 'Course was successfully updated.'
     else
@@ -49,6 +49,22 @@ class CohortsController < ApplicationController
     @cohort = Cohort.find(params[:id])
     @cohort.destroy
     redirect_to(cohorts_path)
+  end
+
+#----OTHER-THAN-CRUD-----------  
+
+  # GET /cohorts/1/enroll
+  def enroll
+    @cohort = Cohort.find(params[:id])
+    @users = User.who_can_enroll @cohort
+    render "enroll"
+  end
+
+  # GET /cohorts/1/assign_teachers
+  def assign_teachers
+    @cohort = Cohort.find(params[:id])
+    @users = User.who_is_instructor @cohort
+    render "assign_teachers"
   end
 
 end
