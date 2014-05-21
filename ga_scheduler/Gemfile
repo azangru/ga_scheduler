@@ -41,3 +41,13 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # ====ADDITIONAL GEMS=======
 gem 'carrierwave', "0.9.0"
 gem 'rmagick'
+
+gem 'cancan'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'hirb'
+end

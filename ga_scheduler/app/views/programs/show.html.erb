@@ -1,17 +1,3 @@
-hihkij
+<h3><%= @program.name %></h3>
 
-fgsfsdgsdfg
-
-sdfgsdfg
-
-dsfgdfgsdfg
-
-
-<% if @user.role == "instructor" %>
-  some instructor only stuff 
-<% end %>
-
-
-<% if can? :create, Foo %>
-  link for foo creation
-<% end %>
+<p><%= raw @program.description %></p>

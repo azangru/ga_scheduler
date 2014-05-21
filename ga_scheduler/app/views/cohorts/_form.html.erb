@@ -1,0 +1,19 @@
+<%= form_for(@cohort) do |f| %>
+
+  <div class="field">
+    <%= f.label :name, "Name of the course:"  %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date, "Starts on:" %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date, "Ends on:" %><br />
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit("Create course") %>
+  </div>
+
+<% end %>
