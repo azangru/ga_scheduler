@@ -58,7 +58,7 @@ class CohortsController < ApplicationController
     @classrooms = Classroom.all
     if params[:user_type] == "students"
       @cohort.enroll_users(params[:users])
-    else
+    elsif params[:user_type] == "instructors"
       @cohort.assign_instructors(params[:users])
     end
     @cohort.save

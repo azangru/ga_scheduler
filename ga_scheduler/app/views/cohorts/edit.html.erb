@@ -16,8 +16,8 @@
   <% @cohort.students.each do |s| %>
     <tr>
       <td><%= s.full_name %></td>
-      <td>prework done?</td>
-      <td>paid?</td>
+      <td><%= check_box_tag "enrollments[prework_done]" , s.id %></td>
+      <td><%= check_box_tag "enrollments[paid]" , s.id %></td>
       <td>Delete</td>
     </tr>
   <% end %>

@@ -1,0 +1,76 @@
+body {
+  font-family: "News706BT-RomanC",Georgia;
+  color: #222;
+  font-size: 120%;
+  line-height: 1.5;
+  background: #fff;
+
+}
+
+nav {
+  background-color: black;
+  min-height: 4em;
+  color: white;
+}
+
+.menu li{
+  float: left;
+  margin: 5px;
+}
+
+nav a {
+  color: white;
+}
+
+.Login {
+  text-align: right;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-family: "PFDinTextCompProBold",Impact,Arial;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 150%;
+  line-height: 0.9;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-family: "PFDinTextCompProBold",Impact,Arial;
+  font-weight: normal;
+  font-size: 130%;
+  color: #666;
+  margin-bottom: 1em;
+}
+
+h4 {
+  font-family: "News706BT-RomanC",Georgia;
+  font-weight: bold;
+  font-size: 125%;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+
+main {
+  width: 960px;
+  margin: 2em auto 0 auto;
+}
+
+table,th,td
+{
+  border: 1px solid black;
+}
+
+table {
+  margin: auto;
+}
+
+th, td {
+  padding: 5px 10px; 
+}
+
+th {
+  font-weight: bold;
+}
