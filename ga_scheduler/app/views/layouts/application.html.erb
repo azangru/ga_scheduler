@@ -8,16 +8,59 @@
 </head>
 <body>
   <nav>
-  <% if current_user %>
-    Hello, <%= current_user.first_name %>
-    <%= link_to "Logout", session_path(session), method: :delete, confirm: "Sure you want to log out?" %>
-  <% else %>
-    <%= link_to "Login", login_path %>
-  <% end %>
+    <div class="Login">
+      <% if current_user %>
+        Hello, <%= current_user.first_name %>
+        <%= link_to "Logout", session_path(session), method: :delete, confirm: "Sure you want to log out?" %>
+      <% else %>
+        <%= link_to "Login", login_path %>
+      <% end %>
+    </div>
+    <div class="menu">
+      <ul>
+        <li><%= link_to "Programmes", programs_path %></li>
+          <ul>
+            <li><%= link_to "Add programme", new_program_path %></li>
+          </ul>
+        <li><%= link_to 'Courses', courses_path %></li>
+          <ul>
+            <li> <%= link_to "Add course", new_course_path %></li>
+          </ul>
+
+        <% if can? :manage, Cohort %>
+
+          <li><%= link_to 'Cohorts', cohorts_path %></li>
+            <ul>
+              <li><%= link_to "Add cohort", new_cohort_path %></li>
+              <li>Enroll students placeholder</li>
+              <li>Assign teachers placeholder</li>
+            </ul>
+
+        <% end %>
+
+        <li><%= link_to 'Classrooms', classrooms_path %></li>
+          <ul>
+            <li> <%= link_to "Add classroom", new_classroom_path %></li>
+          </ul>        
+        <li><%= link_to 'People', users_path %></li>
+          <ul>
+            <li> <%= link_to "Add user", new_user_path %></li>
+          </ul>
+        <% unless session[:user_id] == nil %>
+          <li><%= link_to 'My profile', user_path(session[:user_id]) %></li>
+        <% end %>
+        <li><%= link_to 'Sign up', new_user_path %></li>
+      </ul>
+    </div>
   </nav>
+  <main>
+    <% flash.each do |name, message| %>
+      <div class="alert-box <%= name %>">
+        <%= message %>
+      </div>
+    <% end %>
 
-
-<%= yield %>
-
+    <%= yield %>
+  </main>
 </body>
 </html>

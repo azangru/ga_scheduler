@@ -2,4 +2,26 @@
 
 <%= render 'form' %>
 
+<h3>Enrolled students</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Prework done?</th>
+      <th>Paid?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @cohort.students.each do |s| %>
+    <tr>
+      <td><%= s.full_name %></td>
+      <td>prework done?</td>
+      <td>paid?</td>
+      <td>Delete</td>
+    </tr>
+  <% end %>
+</table>
+
+
 <%= link_to 'Back', cohort_path(@cohort) %>

@@ -2,10 +2,24 @@
 
 <h4>Enrolled students</h4>
 
-<ul>
-  <% @cohort.students.each do |s| %>
-
-    <li><%= s.full_name %></li>
-  
+<table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Prework done?</th>
+      <th>Paid?</th>
+    </tr>
+  </thead>
+  <% @cohort.enrollments.each do |e| %>
+    <tr>
+      <td><%= e.student.full_name %></td>
+      <td><%= e.prework_done %></td>
+      <td><%= e.paid %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
+
+
+
+

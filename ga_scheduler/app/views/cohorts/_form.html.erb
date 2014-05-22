@@ -5,12 +5,24 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :course_id, "Course:" %><br />
+    <%= collection_select(:cohort, :course_id, Course.all, :id, :name) %>
+  </div>
+
+  <div class="field">
     <%= f.label :start_date, "Starts on:" %><br />
     <%= f.date_select :start_date %>
   </div>
   <div class="field">
     <%= f.label :end_date, "Ends on:" %><br />
     <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <% @classrooms.each do |classroom| %>
+      <%= radio_button_tag(:classroom_id, classroom.id, false, required: "required") %>
+      <%= classroom.name %>
+      <br />
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit("Create course") %>

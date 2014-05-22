@@ -1,17 +1,14 @@
-hihkij
+<h3><%= @user.full_name %></h3>
 
-fgsfsdgsdfg
+<h4><%= "(#{@user.role})" %></h4>
 
-sdfgsdfg
+<p><strong>About:</strong> <%= @user.biography %></p>
 
-dsfgdfgsdfg
-
-
-<% if @user.role == "instructor" %>
-  some instructor only stuff 
-<% end %>
-
-
-<% if can? :create, Foo %>
-  link for foo creation
+<% if @user.role == "student" && @user.studied_courses.count > 0 %>
+  <p><strong>Courses studied:</strong></p>
+  <ul>
+    <% @user.studied_courses.each do |course| %>
+      <li><%= course.name %></li>
+    <% end %>
+  </ul>
 <% end %>

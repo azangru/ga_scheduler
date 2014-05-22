@@ -4,7 +4,7 @@ GaScheduler::Application.routes.draw do
 
   resources :users, :programs, :cohorts, :classrooms, :courses
 
-  get 'cohorts/:id/enroll', to: 'cohorts#enroll'
+  get 'cohorts/:id/enroll', to: 'cohorts#enroll'# as: 'enroll'
   get 'cohorts/:id/assign_teachers', to: 'cohorts#assign_teachers'
 
   # For sessions

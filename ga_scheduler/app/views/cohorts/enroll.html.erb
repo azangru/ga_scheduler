@@ -1,7 +1,7 @@
 <h2>This is the enrollment page for cohort <%= @cohort.name %> </h2>
 
 <%= form_for(@cohort) do |f| %>
-
+  <%= hidden_field_tag "user_type", "students"%>
   <div class="field">
     <% @users.each do |user| %>
       <%= check_box_tag "users[]" , user.id %>

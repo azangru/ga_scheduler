@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
+
   # GET /users
   def index
     @users = User.all
+    authorize! :index, User
   end
 
   # GET /users/new
@@ -12,7 +14,9 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
+    params[:user].delete(:role) unless current.user == "admin"
     @user = User.new(params[:user])
+    authorize! :create, @user
     if @user.save
       # if no session key for the form_Step, then create one 
       # session[:form_step] = 1
@@ -28,6 +32,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
     @user = User.find(params[:id])
+    authorize! :show, @user
     # role = @user.role || "default"
     # render "#{role}_show"
     
@@ -37,11 +42,14 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    authorize! :update, @user
   end
 
   # PUT /users/1
   def update
+    params[:user].delete(:role) unless current.user == "admin"
     @user = User.find(params[:id])
+    authorize! :update, @user
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'
     else
@@ -52,6 +60,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
+    authorize! :destroy, @user
     @user.destroy
     redirect_to(users_path)
   end

@@ -28,10 +28,12 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="field">
-    <%= f.label :role %>
-    <%= select_tag(:role, options_for_select(["admin", "producer", "instructor", "student"], "student")) %>
-  </div>
+  <% if logged_in? && current_user.role == "admin" %>
+    <div class="field">
+      <%= f.label :role %>
+      <%= select_tag(:role, options_for_select(["admin", "producer", "instructor", "student"], "student")) %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

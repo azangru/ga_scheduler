@@ -1,5 +1,7 @@
 class ClassroomsController < ApplicationController
 
+  before_filter :authenticate
+
   # GET /rooms
   def index
     @classrooms = Classroom.all
