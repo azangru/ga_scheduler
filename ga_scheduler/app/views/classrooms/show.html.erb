@@ -2,3 +2,10 @@
 
 <p><strong>Campus:</strong> <%= @classroom.location.name %></p>
 <p><strong>Capacity:</strong> <%= @classroom.size %> people</p>
+
+<div class="button_container">
+  <%= link_to "Delete classroom", classroom_path(@classroom), method: :delete, class: "button" %>
+</div>
+<div class="button_container">
+  <%= link_to "Edit classroom info", edit_classroom_path(@classroom), class: "button" %>
+</div>

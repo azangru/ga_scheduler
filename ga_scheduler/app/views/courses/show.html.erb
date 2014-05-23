@@ -1,7 +1,9 @@
 <h2><%= @course.name %></h2>
 <h3>(<%= "#{@course.program.name}, #{@course.location.name}" %>)</h3>
 
-<h4>list of all cohorts within this course:</h4>
+<p> <strong>Course producer:</strong> <%= @course.producer.full_name %> </p>
+
+<h4>List of all cohorts within this course:</h4>
 
 <ul>
 <% @course.cohorts.each do |cohort| %>
@@ -10,3 +12,10 @@
 
 <% end %>
 </ul>
+
+<div class="button_container">
+  <%= link_to "Delete course", course_path(@course), method: :delete, class: "button" %>
+</div>
+<div class="button_container">
+  <%= link_to "Edit course info", edit_course_path(@course), class: "button" %>
+</div>

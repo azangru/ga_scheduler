@@ -13,7 +13,7 @@ u1 = User.create!(
   password: "password",
   password_confirmation: "password",
   biography: "Originally from Moscow, Russia. Came to GA to seek fortune",
-  email: "andrey.azov@gmail.com",
+  email: "andrey@example.com",
   role: "admin"
 )
 
@@ -33,7 +33,7 @@ u3 = User.create!(
   password: "password",
   password_confirmation: "password",
   biography: "Geraud is a developer working with Ruby, Rails and recently Ember. Originally from Paris, Geraud worked as a freelance developer for three years (creating his own developer training program in the process) before joining General Assembly to teach WDI.",
-  email: "gerry@ga.co",
+  email: "gerry@example.com",
   role: "instructor"
 )
 
@@ -44,6 +44,36 @@ u4 = User.create!(
   password_confirmation: "password",
   biography: "Matt came to WDI to acquire technological skills that will help him to create a successful startup.",
   email: "matt@somewhere.co.uk",
+  role: "student"
+)
+
+u5 = User.create!(
+  first_name: "Jane",
+  last_name: "Doe",
+  password: "password",
+  password_confirmation: "password",
+  biography: "Jane is a completely fictional character, because I need can't remember the name of the real producer of UXDI-LDN.",
+  email: "jane@somewhere.co.uk",
+  role: "producer"
+)
+
+u6 = User.create!(
+  first_name: "Caroline",
+  last_name: "Hughes",
+  password: "password",
+  password_confirmation: "password",
+  biography: "Caroline will help me to test enrollments.",
+  email: "caroline@somewhere.co.uk",
+  role: "student"
+)
+
+u7 = User.create!(
+  first_name: "Yasmin",
+  last_name: "Razavi",
+  password: "password",
+  password_confirmation: "password",
+  biography: "Caroline will help me to test enrollments.",
+  email: "yasmin@somewhere.co.uk",
   role: "student"
 )
 
@@ -73,6 +103,72 @@ loc1 = Location.create!(
   abbreviation: "LDN"
 )
 
+loc2 = Location.create!(
+  name: "New York City",
+  address: "Somewhere in New York, hard to find",
+  abbreviation: "NYC"
+)
+
+loc4 = Location.create!(
+  name: "Atlanta",
+  address: "Somewhere in Atlanta, hard to find",
+  abbreviation: "ATL"
+)
+
+loc5 = Location.create!(
+  name: "Berlin",
+  address: "Somewhere in Berlin, hard to find",
+  abbreviation: "ATL"
+)
+
+loc6 = Location.create!(
+  name: "Boston",
+  address: "Somewhere in Boston, hard to find",
+  abbreviation: "BST"
+)
+
+loc7 = Location.create!(
+  name: "Hong Kong",
+  address: "Somewhere in Hong Kong, hard to find",
+  abbreviation: "HKG"
+)
+
+loc8 = Location.create!(
+  name: "Los Angeles",
+  address: "Somewhere in Los Angeles, hard to find",
+  abbreviation: "LA"
+)
+
+loc9 = Location.create!(
+  name: "Melbourne",
+  address: "Somewhere in Melbourne, hard to find",
+  abbreviation: "MLB"
+)
+
+loc10 = Location.create!(
+  name: "San Francisco",
+  address: "Somewhere in San Francisco, hard to find",
+  abbreviation: "SF"
+)
+
+loc11 = Location.create!(
+  name: "Seattle",
+  address: "Somewhere in Seattle, hard to find",
+  abbreviation: "STL"
+)
+
+loc12 = Location.create!(
+  name: "Sydney",
+  address: "Somewhere in Sydney, hard to find",
+  abbreviation: "SDN"
+)
+
+loc13 = Location.create!(
+  name: "Washington D.C.",
+  address: "Somewhere in Washington D.C., hard to find",
+  abbreviation: "WSH"
+)
+
 cls1 = Classroom.create!(
   name: "Room 3",
   size: 30,
@@ -86,11 +182,32 @@ crs1 = Course.create!(
   producer_id: u2.id
   )
 
+crs2 = Course.create!(
+  name: "UXDI_LDN",
+  program_id: p2.id,
+  location_id: loc1.id,
+  producer_id: u5.id
+  )
+
+crs3 = Course.create!(
+  name: "WDI_NYC",
+  program_id: p1.id,
+  location_id: loc2.id,
+  producer_id: u5.id
+  )
+
 cht1 = Cohort.create!(
   name: "WDI_LDN_6",
   course_id: crs1.id,
   start_date: Date.new(2014,04,21),
   end_date: Date.new(2014,07,11)
+)
+
+cht2 = Cohort.create!(
+  name: "WDI_LDN_5",
+  course_id: crs1.id,
+  start_date: Date.new(2014,03,31),
+  end_date: Date.new(2014,06,22)
 )
 
 cls1 = Classroom.create!(

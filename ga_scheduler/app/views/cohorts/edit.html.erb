@@ -1,6 +1,8 @@
 <h2>Edit upcoming course information</h2>
 
+<div class="form_container">
 <%= render 'form' %>
+</div>
 
 <h3>Enrolled students</h3>
 
@@ -16,7 +18,7 @@
   <% @cohort.students.each do |s| %>
     <tr>
       <td><%= s.full_name %></td>
-      <td><%= check_box_tag "enrollments[prework_done]" , s.id %></td>
+      <td><%= check_box_tag "enrollments[prework_done]" , s.id , s %></td>
       <td><%= check_box_tag "enrollments[paid]" , s.id %></td>
       <td>Delete</td>
     </tr>

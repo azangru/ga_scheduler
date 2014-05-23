@@ -14,9 +14,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    params[:user].delete(:role) unless current.user == "admin"
     @user = User.new(params[:user])
-    authorize! :create, @user
     if @user.save
       # if no session key for the form_Step, then create one 
       # session[:form_step] = 1
@@ -47,8 +45,7 @@ class UsersController < ApplicationController
 
   # PUT /users/1
   def update
-    params[:user].delete(:role) unless current.user == "admin"
-    @user = User.find(params[:id])
+   @user = User.find(params[:id])
     authorize! :update, @user
     if @user.update_attributes(params[:user])
       redirect_to @user, notice: 'User was successfully updated.'

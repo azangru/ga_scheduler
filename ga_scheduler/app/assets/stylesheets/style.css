@@ -1,3 +1,9 @@
+header {
+  background-color: black;
+  min-height: 5em;
+  color: white;
+}
+
 body {
   font-family: "News706BT-RomanC",Georgia;
   color: #222;
@@ -5,26 +11,64 @@ body {
   line-height: 1.5;
   background: #fff;
 
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
 }
 
 nav {
-  background-color: black;
-  min-height: 4em;
-  color: white;
+  text-align: center;
 }
 
-.menu li{
-  float: left;
+nav li {
+  display: inline;
   margin: 5px;
 }
 
+/*.menu li{
+  float: left;
+  margin: 5px;
+}*/
+
+
 nav a {
-  color: white;
+  text-decoration: none;
+  border-bottom: 1px dashed;
+  color: inherit;
+}
+
+nav a:hover {
+  color: red;
+}
+
+
+.alert-box {
+  margin-right: 1em;
+  text-align: right;
+}
+
+.notice {
+  color: green;
+}
+
+.alert {
+  color: red;
+}
+
+.logo {
+  float: left;
+  margin-top: 1em;
 }
 
 .Login {
   text-align: right;
-  margin-bottom: 1em;
+  padding: 0.5em 1em 1em 0;
+}
+
+.profile {
+  width: 300px;
+  margin: auto;
 }
 
 h2 {
@@ -42,7 +86,7 @@ h3 {
   font-weight: normal;
   font-size: 130%;
   color: #666;
-  margin-bottom: 1em;
+  margin: 0.5em 0;
 }
 
 h4 {
@@ -50,12 +94,14 @@ h4 {
   font-weight: bold;
   font-size: 125%;
   color: #666;
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
 }
 
 main {
   width: 960px;
   margin: 2em auto 0 auto;
+
+  flex: 1;
 }
 
 table,th,td
@@ -64,7 +110,7 @@ table,th,td
 }
 
 table {
-  margin: auto;
+  margin: 0 auto 1em auto;
 }
 
 th, td {
@@ -74,3 +120,86 @@ th, td {
 th {
   font-weight: bold;
 }
+
+.form_container {
+  width: 550px;
+  margin: auto;
+}
+
+small {
+  font-size: 80%;
+  padding-left: 1em;
+}
+
+i {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid;
+  color: inherit;
+}
+
+a:hover {
+  color: red;
+}
+
+footer {
+  background-color: black;
+  min-height: 5em;
+  color: white;
+  margin-top: 1em;
+  padding-top: 1em;
+  line-height: 120%;
+}
+
+.about {
+  font-size: 60%;
+  text-align: right;
+}
+
+/*==Buttons==*/
+
+.button_container {
+  float: right;
+  padding-left: 0.5em;
+}
+
+.button {
+   border-top: 1px solid #c497f7;
+   background: #f70000;
+   background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#f70000));
+   background: -webkit-linear-gradient(top, #ff0000, #f70000);
+   background: -moz-linear-gradient(top, #ff0000, #f70000);
+   background: -ms-linear-gradient(top, #ff0000, #f70000);
+   background: -o-linear-gradient(top, #ff0000, #f70000);
+   padding: 9px 18px;
+   -webkit-border-radius: 0px;
+   -moz-border-radius: 0px;
+   border-radius: 0px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #ba1212;
+   background: #ba1212;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #205e87;
+   background: #205e87;
+   }

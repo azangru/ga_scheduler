@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :biography, :email, :first_name, :last_name, :password, :password_confirmation, :photo, :role
 
+  mount_uploader :photo, PhotoUploader
 
   has_many :courses, foreign_key: 'producer_id'
 
@@ -23,7 +24,6 @@ class User < ActiveRecord::Base
       end
       !program_ids.include? cohort.course.program_id
     end
-    all # TODO REMOVE THIS 
   end
 
   def self.who_is_instructor cohort

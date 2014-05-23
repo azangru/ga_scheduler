@@ -20,6 +20,11 @@
 </table>
 
 
-
+<div class="button_container">
+  <%= link_to "Delete cohort", cohort_path(@cohort), method: :delete, class: "button" %>
+</div>
+<div class="button_container">
+  <%= link_to "Edit cohort info", edit_cohort_path(@cohort), class: "button" %>
+</div>
 
 

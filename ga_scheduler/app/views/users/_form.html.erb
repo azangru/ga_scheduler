@@ -13,8 +13,8 @@
     <%= f.text_area :biography %>
   </div>
   <div class="field">
-    <%= f.label :file, 'Upload your photo' %>
-    <%= f.file_field :file %>
+    <%= f.label :photo, 'Upload your photo' %>
+    <%= f.file_field :photo %>
   </div>
   <div class="field">
     <%= f.label :email, 'Email' %>
@@ -31,7 +31,7 @@
   <% if logged_in? && current_user.role == "admin" %>
     <div class="field">
       <%= f.label :role %>
-      <%= select_tag(:role, options_for_select(["admin", "producer", "instructor", "student"], "student")) %>
+      <%= select_tag(:role, options_for_select(["admin", "producer", "instructor", "student"])) %>
     </div>
   <% end %>
   <div class="actions">

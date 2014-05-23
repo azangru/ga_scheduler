@@ -1,11 +1,11 @@
 GaScheduler::Application.routes.draw do
   
-  root :to => 'users#index'
+  root :to => 'programs#index'
 
   resources :users, :programs, :cohorts, :classrooms, :courses
 
-  get 'cohorts/:id/enroll', to: 'cohorts#enroll'# as: 'enroll'
-  get 'cohorts/:id/assign_teachers', to: 'cohorts#assign_teachers'
+  get 'cohorts/:id/enroll', to: 'cohorts#enroll', as: 'enroll'
+  get 'cohorts/:id/assign_teachers', to: 'cohorts#assign_teachers', as: 'assign_teachers'
 
   # For sessions
   get "/login", to: "sessions#new"

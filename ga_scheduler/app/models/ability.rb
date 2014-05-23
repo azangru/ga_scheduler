@@ -10,9 +10,8 @@ class Ability
       else
         can :manage, User do |user_instance|
             user_instance == user
-        end
-
-        can :read, Cohort
+            end
+        can :read, [Program, Course, Cohort]
       end
   end
 end
