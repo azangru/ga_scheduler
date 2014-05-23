@@ -14,7 +14,6 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-
 }
 
 nav {
@@ -55,6 +54,11 @@ nav a:hover {
 .alert {
   color: red;
 }
+
+.error {
+  color: red;
+}
+
 
 .logo {
   float: left;
@@ -163,6 +167,11 @@ footer {
 .about {
   font-size: 60%;
   text-align: right;
+}
+
+.booked {
+  color: red;
+  font-size: 70%;
 }
 
 /*==Buttons==*/

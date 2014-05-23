@@ -6,7 +6,7 @@ GaScheduler::Application.routes.draw do
 
   get 'cohorts/:id/enroll', to: 'cohorts#enroll', as: 'enroll'
   get 'cohorts/:id/assign_teachers', to: 'cohorts#assign_teachers', as: 'assign_teachers'
-
+  delete "cohorts/:id/remove_enrollment/:student_id", to: 'cohorts#remove_enrollment', as: 'remove_enrollment'
   # For sessions
   get "/login", to: "sessions#new"
   resources :sessions, only: [:new, :create, :destroy]

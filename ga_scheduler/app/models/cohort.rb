@@ -12,7 +12,6 @@ class Cohort < ActiveRecord::Base
 
 
   def enroll_users user_ids
-    binding.pry
     user_ids.each do |user_id|
       Enrollment.create(student_id: user_id, cohort_id: self.id)
       #enrollments.create(student_id: user_id)
@@ -26,4 +25,19 @@ class Cohort < ActiveRecord::Base
     end
   end
 
+
+  def update_enrollments new_enrollments
+    puts new_enrollments.inspect
+    self.enrollments.each do |enrollment|
+      student_object = new_enrollments[enrollment.student_id.to_s]
+      paid = student_object ? student_object["paid"] : false
+      prework_done = student_object ? student_object["prework_done"] : false
+      enrollment.update_attributes({
+        prework_done: prework_done,
+        paid: paid
+      })
+    end
+  end
+
+  
 end

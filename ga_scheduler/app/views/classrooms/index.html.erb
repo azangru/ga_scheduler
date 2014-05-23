@@ -1,7 +1,8 @@
 <div class="button_container">
   <%= link_to "Add a classroom", new_classroom_path, class: "button" %>
 </div>
-<% locations = Location.all %>
+<% courses = Course.all %>
+<% locations = courses.map { |course| course.location }.uniq %>
 <% locations.each do |l| %>
   <h3><%= "Classrooms in #{l.name}" %></h3>
   <% cl = Classroom.where("location_id = ?", l.id) %>

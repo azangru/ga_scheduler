@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  attr_accessible :biography, :email, :first_name, :last_name, :password, :password_confirmation, :photo, :role
+  attr_accessible :biography, :email, :first_name, :last_name, :password, :password_confirmation, :photo
+
+  # removed :role from mass assignment; will need it if seed
 
   mount_uploader :photo, PhotoUploader
 

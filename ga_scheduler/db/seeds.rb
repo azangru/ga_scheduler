@@ -23,7 +23,7 @@ u2 = User.create!(
   password: "password",
   password_confirmation: "password",
   biography: "After a stint in diplomacy, Julien spent a few years advising multinationals on how to successfully expand their activities in Asia. While working with exciting tech companies on equally exciting projects, he decided to make a full transition into the tech field. A tech aficionado, lifelong expat and hot chocolate enthusiast, Julien loves languages; as if speaking a whole bunch of them wasn't enough, Julien joined WDI to learn a few more - this time of the programming type. And he's had such a great time coding that he will be back to teach the next WDI at General Assembly.",
-  email: "contact@deslangles.com",
+  email: "julien@example.com",
   role: "producer"
 )
 

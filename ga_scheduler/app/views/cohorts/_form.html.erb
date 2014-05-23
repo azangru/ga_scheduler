@@ -21,6 +21,7 @@
     <% @classrooms.each do |classroom| %>
       <%= radio_button_tag(:classroom_id, classroom.id, false, required: "required") %>
       <%= classroom.name %>
+      <span class="booked"><%= "(booked #{room_occupancy(classroom)})" %></span>
       <br />
     <% end %>
   </div>

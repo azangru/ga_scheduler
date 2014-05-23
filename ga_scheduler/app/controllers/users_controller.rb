@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       # also save the user_id that has just been saved
       # session[:user_id_in_creation] = 12
       # render new 
+      session[:user_id] = @user.id
       redirect_to @user, notice: 'User was successfully created.'
     else
       render action: "new"

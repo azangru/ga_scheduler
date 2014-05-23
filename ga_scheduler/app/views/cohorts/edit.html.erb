@@ -5,7 +5,7 @@
 </div>
 
 <h3>Enrolled students</h3>
-
+<%= form_tag cohort_path(@cohort), method: :put do %>
 <table>
   <thead>
     <tr>
@@ -18,12 +18,13 @@
   <% @cohort.students.each do |s| %>
     <tr>
       <td><%= s.full_name %></td>
-      <td><%= check_box_tag "enrollments[prework_done]" , s.id , s %></td>
-      <td><%= check_box_tag "enrollments[paid]" , s.id %></td>
-      <td>Delete</td>
+      
+      <td><%= prework_done_checkbox @cohort, s  %></td>
+      <td><%= paid_checkbox @cohort, s  %></td>
+      <td><%= link_to "Delete", remove_enrollment_path(@cohort, s.id), method: :delete, confirm: "Are You Sure ?"%></td>
     </tr>
   <% end %>
 </table>
-
-
+  <%= submit_tag %>
+<% end %>
 <%= link_to 'Back', cohort_path(@cohort) %>

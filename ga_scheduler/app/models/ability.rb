@@ -7,10 +7,12 @@ class Ability
         can :manage, :all
       elsif user.role? :producer
         can :manage, [Cohort, Enrollment, TeachingAssignment, User]
-      else
+      elsif user.role? :student
         can :manage, User do |user_instance|
             user_instance == user
-            end
+            end   
+      else
+        can :create, User
         can :read, [Program, Course, Cohort]
       end
   end
