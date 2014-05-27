@@ -1,0 +1,13 @@
+<h2>This is the instructor assignment page for cohort <%= @cohort.name %> </h2>
+
+<%= form_for(@cohort) do |f| %>
+  <%= hidden_field_tag "user_type", "instructors"%>
+  <div class="field">
+    <% @users.each do |user| %>
+      <%= check_box_tag "users[]" , user.id %>
+      <%= user.full_name %>
+      <br>
+    <% end %>
+  </div>
+  <%= f.submit%>
+<% end %>

@@ -1,0 +1,16 @@
+<% if can? :manage, Course %>
+  <div class="button_container">
+    <%= link_to "Add a course", new_course_path, class: "button" %>
+  </div>
+<% end %>
+<h2>Courses and producers</h3>
+  
+<% courses = Course.all %>
+<% locations = courses.map { |course| course.location }.uniq %>
+<% locations.each do |l| %>
+  <h3><%= "Courses in #{l.name}" %></h3>
+  <% crs = Course.where("location_id = ?", l.id) %>
+  <% crs.each do |c| %>
+    <li><%= link_to "#{c.name}", c %> <%= "(producer: #{c.producer.full_name})" %></li>
+  <% end %>
+<% end %>

@@ -1,0 +1,20 @@
+<% if can? :create, Program %>
+<div class="button_container">
+  <%= link_to "Add a programme", new_program_path, class: "button" %>
+</div>
+<% end %>
+<h2>General Assembly Teaching Programmes</h2>
+
+<!-- ===SHOW PROGRAM NAMES ONLY IF PRESENT IN LOCATION=== -->
+
+<% courses = Course.all %>
+<% locations = courses.map { |course| course.location }.uniq %>
+<% locations.each do |l| %>
+  <h3><%= "In #{l.name}" %></h3>
+  <% crs = Course.where("location_id = ?", l.id) %>
+  <% crs.each do |c| %>
+    <li><%= link_to "#{c.program.name}", c.program %> </li>
+  <% end %>
+<% end %>
+
+<!-- ========== -->
