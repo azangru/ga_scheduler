@@ -1,0 +1,30 @@
+<h2>Edit upcoming course information</h2>
+
+<div class="form_container">
+<%= render 'form' %>
+</div>
+
+<h3>Enrolled students</h3>
+<%= form_tag cohort_path(@cohort), method: :put do %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Prework done?</th>
+      <th>Paid?</th>
+      <th></th>
+    </tr>
+  </thead>
+  <% @cohort.students.each do |s| %>
+    <tr>
+      <td><%= s.full_name %></td>
+      
+      <td><%= prework_done_checkbox @cohort, s  %></td>
+      <td><%= paid_checkbox @cohort, s  %></td>
+      <td><%= link_to "Delete", remove_enrollment_path(@cohort, s.id), method: :delete, confirm: "Are You Sure ?"%></td>
+    </tr>
+  <% end %>
+</table>
+  <%= submit_tag %>
+<% end %>
+<%= link_to 'Back', cohort_path(@cohort) %>

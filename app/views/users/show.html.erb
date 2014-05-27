@@ -1,0 +1,31 @@
+<h3><%= @user.full_name %></h3>
+
+<h4><%= "(#{@user.role})" %></h4>
+
+<div class="profile">
+  <% if @user.photo.url.present? %>
+  <%= image_tag @user.photo.url, width: '300' %>
+  <% end %>
+</div>
+
+<p><strong>About:</strong> <%= @user.biography %></p>
+
+<% if @user.role == "student" && @user.studied_courses.count > 0 %>
+  <p><strong>Courses studied:</strong>
+    <% @user.studied_courses.each do |course| %>
+      <%= course.name %> 
+    <% end %>
+  </p>
+<% end %>
+
+<% if @user.role == "instructor" && @user.taught_courses.count > 0 %>
+  <p><strong>Courses taught:</strong>
+    <%= @user.taught_courses.map { |course| course.name}.join(", ")  %>
+  </p>
+<% end %>
+<div class="button_container">
+  <%= link_to "Delete user", user_path(@user), method: :delete, class: "button" %>
+</div>
+<div class="button_container">
+  <%= link_to "Edit user info", edit_user_path(@user), class: "button" %>
+</div>

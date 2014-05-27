@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cohort_id: 1
+  student_id: 1
+  prework_done: false
+  paid: false
+
+two:
+  cohort_id: 1
+  student_id: 1
+  prework_done: false
+  paid: false

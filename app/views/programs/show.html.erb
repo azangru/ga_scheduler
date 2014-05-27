@@ -1,0 +1,13 @@
+<h3><%= @program.name %></h3>
+
+<p><%= raw @program.description %></p>
+
+<div class="button_container">
+  <%= link_to "Delete programme", program_path(@program), method: :delete, class: "button" %>
+</div>
+
+<div class="vertical_spacer"></div>
+
+<div class="button_container">
+  <%= link_to "Edit programme info", edit_program_path(@program), class: "button" %>
+</div>

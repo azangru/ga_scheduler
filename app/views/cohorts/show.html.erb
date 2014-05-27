@@ -1,0 +1,30 @@
+<h3><%= @cohort.name %></h3>
+
+<h4>Enrolled students</h4>
+
+<table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Prework done?</th>
+      <th>Paid?</th>
+    </tr>
+  </thead>
+  <% @cohort.enrollments.each do |e| %>
+    <tr>
+      <td><%= e.student.full_name %></td>
+      <td><%= e.prework_done %></td>
+      <td><%= e.paid %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<div class="button_container">
+  <%= link_to "Delete cohort", cohort_path(@cohort), method: :delete, class: "button" %>
+</div>
+<div class="button_container">
+  <%= link_to "Edit cohort info", edit_cohort_path(@cohort), class: "button" %>
+</div>
+
+

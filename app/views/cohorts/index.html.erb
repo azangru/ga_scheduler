@@ -1,0 +1,23 @@
+<% if can? :manage, Cohort %>
+<div class="button_container">
+  <%= link_to "New cohort", new_cohort_path, class: "button" %>
+</div>
+<% end %>
+<h2>Courses: individual cohorts</h2>
+
+<% courses = Course.all %>
+<% courses_with_location = courses.select { |course| course.cohorts.count > 0} %>
+<% locations = courses_with_location.map { |course| course.location }.uniq %>
+<% locations.each do |l| %>
+  <h3><%= "In #{l.name}" %></h3>
+       <% crs = l.courses %>
+           <% chts =  crs.map { |course| course.cohorts }.flatten %>
+
+            <% chts.each do |c| %>
+              <li><%= link_to "#{c.name}", c %> <%= "(#{c.start_date}–#{c.end_date})" %> 
+                <% if can? :manage, Cohort %>
+                  <small><%= link_to "Enroll students", enroll_path(c) %>, <%= link_to "Assign instructors", assign_teachers_path(c) %></small>
+                  <% end %>
+              </li>
+            <% end %>
+<% end %>

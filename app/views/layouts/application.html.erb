@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GaScheduler</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+<header>
+    <div class="logo">
+    <%= image_tag("ga-logo.png", height: '32', alt: "Edit Entry") %>
+    </div>
+    <div class="Login">
+      <% if current_user %>
+        Hello, <%= current_user.first_name %>
+        <%= link_to "Logout", session_path(session), method: :delete, confirm: "Sure you want to log out?" %>
+      <% else %>
+        <%= link_to "Login", login_path %> or
+        <%= link_to "Sign up", new_user_path %>
+      <% end %>
+    </div>
+</header>
+<body>
+  <nav>
+    <ul>
+      <li><%= link_to "Programmes", programs_path %></li>
+      <li><%= link_to 'Courses', courses_path %></li>
+      <li><%= link_to 'Cohorts', cohorts_path %></li>
+      
+      <% if can? :manage, Classroom %>
+        <li><%= link_to 'Classrooms', classrooms_path %></li>
+      <% end %>
+
+      <% if can? :manage, User %>
+      <li><%= link_to 'People', users_path %></li>
+      <% end %>
+
+      <% unless session[:user_id] == nil %>
+        <li><%= link_to 'My profile', user_path(session[:user_id]) %></li>
+      <% end %>
+    </ul>
+  </nav>
+    <% flash.each do |name, message| %>
+      <div class="alert-box <%= name %>">
+        <%= message %>
+      </div>
+    <% end %>
+  <main>
+    <%= yield %>
+  </main>
+  <footer>
+    <div class="about">
+      <p> <i>GA Schedule Planner</i> is the first project of the Web Development Immersive programme by General Assembly</p>
+      <p>Made by Andrey Azov, May 2014</p>
+      <p>Big thanks and warm hugs to Gerry Mathe, Jon Chambers and Tim Elder</p>
+    </div>
+  </footer>
+</body>
+</html>
