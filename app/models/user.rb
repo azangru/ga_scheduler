@@ -50,4 +50,15 @@ class User < ActiveRecord::Base
     self.role.to_s == role.to_s
   end
 
+
+# =======FOR JSON GENERATION==========
+
+  def as_json(options={})
+    super(:only => [:id, :first_name, :last_name, :role],
+          :methods => [:full_name]
+    )
+  end
+
+# ====================================
+
 end
